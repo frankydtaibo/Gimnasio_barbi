@@ -1,8 +1,8 @@
 <?php
   /*-------------------------
   Autor: Frank Taibo
-  Cod Menu: 001
-  Cod Item Menu:002
+  Cod Menu: 002
+  Cod Item Menu:001
   ---------------------------*/
   session_start();
   if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
@@ -14,13 +14,13 @@
   require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
   require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
     $active_usuarios="active";  
-  $title="Usuarios";
+  $title="Alumnos";
   if (isset($title))
     {
       
       $user_perfil_id=$_SESSION['user_perfil_id'];
-      $menu_cod='001';
-      $menu_item_cod='002';
+      $menu_cod='002';
+      $menu_item_cod='001';
     }
     include("modal/valida_permiso.php");
   
@@ -38,17 +38,17 @@
     <div class="panel panel-primary">
     <div class="panel-heading">
         <div class="btn-group pull-right">
-        <button type='button' class="btn btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" ></span> Nuevo Usuario</button>
+        <button type='button' class="btn btn-success" data-toggle="modal" data-target="#nuevo_alumno"><span class="glyphicon glyphicon-plus" ></span> Nuevo Alumno</button>
       </div>
-      <h4><i class='icon-usuarios icono-titulo'></i> Usuarios</h4>
+      <h4><i class='icon-usuarios icono-titulo'></i> Alumnos</h4>
     </div>      
       <div class="panel-body">
       <?php
-      include("modal/001002editar_usuarios.php");
-      include("modal/001002registro_usuarios.php");
-      include("modal/001002ver_usuarios.php");
+     include("modal/002001registro_alumnos.php");
      /*  
+       include("modal/001002editar_usuarios.php");
       
+      include("modal/001002ver_usuarios.php");
       
       require_once("modal/001002cambiar_password.php");
       
@@ -56,7 +56,7 @@
       <form class="form-horizontal" role="form" id="datos_cotizacion">
         
             <div class="form-group row">
-              <label for="q" class="col-md-1 control-label">Nombres:</label>
+              <label for="q" class="col-md-1 control-label">Alumno:</label>
               <div class="col-md-5">
                 <input type="text" class="form-control" id="q" placeholder="Nombre" onkeyup='load(1);'>
               </div>
@@ -85,7 +85,7 @@
   <?php
   include("footer.php");
   ?>
-  <script type="text/javascript" src="js/001002usuarios.js"></script>
+  <script type="text/javascript" src="js/002001alumnos.js"></script>
 
   
   
@@ -93,5 +93,3 @@
 
   </body>
 </html>
-
-
