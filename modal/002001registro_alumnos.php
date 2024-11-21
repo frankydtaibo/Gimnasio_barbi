@@ -65,9 +65,9 @@
               </div>
 
               <div class="form-group">
-                <label for="fecha_prox_pago" class="col-sm-3 control-label">Fecha Proximo Pago</label>
+                <label for="fecha_proximo_pago" class="col-sm-3 control-label">Fecha Proximo Pago</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="fecha_prox_pago" name="fecha_prox_pago" placeholder="Ej: DD/MM/YYYY">
+                  <input type="text" class="form-control" id="fecha_proximo_pago" name="fecha_proximo_pago" placeholder="Ej: DD/MM/YYYY">
                 </div>
                 <span></span>
               </div>

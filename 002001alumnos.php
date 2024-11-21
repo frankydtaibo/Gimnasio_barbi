@@ -40,13 +40,14 @@
         <div class="btn-group pull-right">
         <button type='button' class="btn btn-success" data-toggle="modal" data-target="#nuevo_alumno"><span class="glyphicon glyphicon-plus" ></span> Nuevo Alumno</button>
       </div>
-      <h4><i class='icon-usuarios icono-titulo'></i> Alumnos</h4>
+      <h4><i class='icon-agregar-usuario icono-titulo'></i> Alumnos</h4>
     </div>      
       <div class="panel-body">
       <?php
      include("modal/002001registro_alumnos.php");
+     include("modal/002001editar_alumno.php");
+
      /*  
-       include("modal/001002editar_usuarios.php");
       
       include("modal/001002ver_usuarios.php");
       
