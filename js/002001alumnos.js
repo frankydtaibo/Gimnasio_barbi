@@ -1,12 +1,13 @@
 $(document).ready(function(){
-  $('#fecha_proximo_pago').datetimepicker({
+
+  $('#fecha_nacimiento').datetimepicker({
     date: null,
     viewMode: 'days',
     format: 'DD/MM/YYYY',
     locale: 'es'
   });
 
-  $('#fecha_proximo_pago_editar').datetimepicker({
+  $('#fecha_nacimiento_editar').datetimepicker({
     date: null,
     viewMode: 'days',
     format: 'DD/MM/YYYY',
@@ -15,8 +16,6 @@ $(document).ready(function(){
 
     load(1);
 
-
- 
 });
 
 function load(page){
@@ -137,7 +136,7 @@ function obtener_datos_copia(id){
       $("#user_id_mod").val(id);
     }
   
-    function obtener_datos(id){
+/*     function obtener_datos(id){
   
       var nombres = $("#nombres"+id).val();
       var apellidos = $("#apellidos"+id).val();
@@ -168,7 +167,7 @@ function obtener_datos_copia(id){
    
         
     }
-      
+       */
   
       
     $('#myModal4').on('show.bs.modal', function (event) {
@@ -235,10 +234,10 @@ $( "#guardar_alumno" ).submit(function( event ) {
   var nombres = $("#nombres").val();
   var apellidos = $("#apellidos").val();
   var rut_alumno = $("#rut_alumno").val();
+  var fecha_nacimiento = $("#fecha_nacimiento").val();
   var correo_1 = $("#correo_1").val();
   var correo_2 = $("#correo_2").val();
   var telefono_alumno = $("#telefono_alumno").val();
-  var fecha_proximo_pago = $("#fecha_proximo_pago").val();
   
   var action = 'ajax';
 
@@ -249,10 +248,10 @@ $( "#guardar_alumno" ).submit(function( event ) {
             nombres: nombres,
             apellidos: apellidos,
             rut_alumno: rut_alumno,
+            fecha_nacimiento: fecha_nacimiento,
             correo_1: correo_1,
             correo_2: correo_2,
-            telefono_alumno: telefono_alumno,
-            fecha_proximo_pago: fecha_proximo_pago},
+            telefono_alumno: telefono_alumno},
     dataType:"json",
     beforeSend: function(objeto){
       $("#resultados_ajax").html('<img src="./img/ajax-loader.gif"> Cargando...');
@@ -271,10 +270,10 @@ $( "#guardar_alumno" ).submit(function( event ) {
       var valores = ['nombres',
                      'apellidos',
                      'rut_alumno',
+                     'fecha_nacimiento',
                     'correo_1',
                     'correo_2',
-                'telefono_alumno',
-                'fecha_proximo_pago'
+                'telefono_alumno'
               ];
 
       if(datos.hasOwnProperty('errores')){
@@ -335,19 +334,19 @@ $('#editarAlumno').on('show.bs.modal', function (event) {
   var nombres_alumno = button.data('nombres_alumno');
   var apellidos_alumno = button.data('apellidos_alumno');
   var rut_alumno = button.data('rut_alumno');
+  var fecha_nacimiento = button.data('fecha_nacimiento');
   var correo_1 = button.data('correo_1');
   var correo_2 = button.data('correo_2');
   var telefono = button.data('telefono');
-  var fecha_pago = button.data('fecha_pago');
 
   $("#id_alumno").val(id_alumno);
   $("#nombres_editar").val(nombres_alumno);
   $("#apellidos_editar").val(apellidos_alumno);
   $("#rut_alumno_editar").val(rut_alumno);
+  $("#fecha_nacimiento_editar").val(fecha_nacimiento);
   $("#correo_1_editar").val(correo_1);
   $("#correo_2_editar").val(correo_2);
   $("#telefono_alumno_editar").val(telefono);
-  $("#fecha_proximo_pago_editar").val(fecha_pago);
 
 });
 
@@ -359,10 +358,10 @@ $( "#editar_alumno" ).submit(function( event ) {
   var nombres_editar = $("#nombres_editar").val();
   var apellidos_editar = $("#apellidos_editar").val();
   var rut_alumno_editar = $("#rut_alumno_editar").val();
+  var fecha_nacimiento_editar = $("#fecha_nacimiento_editar").val();
   var correo_1_editar = $("#correo_1_editar").val();
   var correo_2_editar = $("#correo_2_editar").val();
   var telefono_alumno_editar = $("#telefono_alumno_editar").val();
-  var fecha_proximo_pago_editar = $("#fecha_proximo_pago_editar").val();
   var action = 'ajax';
 
   $.ajax({
@@ -373,10 +372,10 @@ $( "#editar_alumno" ).submit(function( event ) {
             nombres_editar: nombres_editar,
             apellidos_editar: apellidos_editar,
             rut_alumno_editar: rut_alumno_editar,
+            fecha_nacimiento_editar: fecha_nacimiento_editar,
             correo_1_editar: correo_1_editar,
             correo_2_editar:correo_2_editar,
-            telefono_alumno_editar: telefono_alumno_editar,
-            fecha_proximo_pago_editar: fecha_proximo_pago_editar
+            telefono_alumno_editar: telefono_alumno_editar
           },
     dataType:"json",
     beforeSend: function(objeto){
@@ -396,10 +395,10 @@ console.log(datos);
         'nombres_editar',
                      'apellidos_editar',
                      'rut_alumno_editar',
+                     'fecha_nacimiento_editar',
                      'correo_1_editar',
                      'correo_2_editar',
-                     'telefono_alumno_editar',
-                     'fecha_proximo_pago_editar'];
+                     'telefono_alumno_editar'];
 
       if(datos.hasOwnProperty('errores')){
         errores = datos['errores'];

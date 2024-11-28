@@ -54,9 +54,9 @@
           <th>Id</th>
             <th>Nombre Alumno</th>
             <th>Rut</th>
+            <th>Fecha Nacimiento</th>
             <th>Correo 1</th>
             <th>Telefono</th>
-            <th>Fecha Pago</th>
             <th>Estado</th>
             <th class='text-right'>Acciones</th>
               
@@ -69,23 +69,23 @@
             $apellidos_alumno = $row['apellidos_alumno'];
             $estado_alumno = $row['estado_alumno'];
             $rut_alumno = $row['rut_alumno'];
+            $fecha_nacimiento=date('d/m/Y',strtotime($row['fecha_nacimiento']));
             $correo_2 = $row['correo_2'];
             $correo_1 = $row['correo_1'];
-            $telefono = $row['telefono_alumno'];
-						$fecha_pago=date('d/m/Y',strtotime($row['fecha_pago']));?>
+            $telefono = $row['telefono_alumno'];?>
             <tr>
                 
                 <td><?php echo $id_alumno; ?></td>
                 <td><?php echo $nombres_alumno.' '.$apellidos_alumno; ?></td>
                 <td><?php echo $rut_alumno; ?></td>
+                <td><?php echo $fecha_nacimiento; ?></td>
                 <td><?php echo $correo_1; ?></td>
                 <td><?php echo $telefono; ?></td>
-                <td><?php echo $fecha_pago; ?></td>
                 <td class="<?php echo $estado_alumno == 1 ? 'text-success':'text-danger'; ?>" ><?php echo $estado_alumno == 1 ? 'Habilitado': 'Desabilitado'; ?></td>
                 
             <td class='text-right'>
               <a href="#" class="btn btn-default <?php echo $estado_alumno == 1 ? 'btn-success':'btn-danger'; ?>" title="Activar/Desactivar" onclick="cambiar_estado('<?php echo $id_alumno; ?>','<?php echo $page; ?>');"><i class="icon-switch"></i></a>
-              <a href="#" class='btn btn-default' title='Editar Alumno' data-toggle="modal" data-target="#editarAlumno" data-id_alumno="<?php echo $id_alumno; ?>"  data-nombres_alumno="<?php echo $nombres_alumno; ?>" data-apellidos_alumno="<?php echo $apellidos_alumno; ?>" data-rut_alumno="<?php echo $rut_alumno; ?>" data-correo_1="<?php echo $correo_1; ?>" data-correo_2="<?php echo $correo_2; ?>" data-telefono="<?php echo $telefono; ?>" data-fecha_pago="<?php echo $fecha_pago; ?>"><i class="glyphicon glyphicon-edit"></i></a> 
+              <a href="#" class='btn btn-default' title='Editar Alumno' data-toggle="modal" data-target="#editarAlumno" data-id_alumno="<?php echo $id_alumno; ?>"  data-nombres_alumno="<?php echo $nombres_alumno; ?>" data-apellidos_alumno="<?php echo $apellidos_alumno; ?>" data-rut_alumno="<?php echo $rut_alumno; ?>"  data-fecha_nacimiento="<?php echo $fecha_nacimiento; ?>"  data-correo_1="<?php echo $correo_1; ?>" data-correo_2="<?php echo $correo_2; ?>" data-telefono="<?php echo $telefono; ?>"><i class="glyphicon glyphicon-edit"></i></a> 
               <a href="#" class='btn btn-danger' title='Borrar alumno' onclick="eliminar('<?php echo $id_alumno; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 
             </td>

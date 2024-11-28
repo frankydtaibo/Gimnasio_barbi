@@ -80,7 +80,6 @@ if ($action == 'ajax') {
     }
   }
 
-
   $rut_alumno = $_POST['rut_alumno'];
 
   if (!empty($rut_alumno)) {
@@ -90,7 +89,26 @@ if ($action == 'ajax') {
     if (!validar($rut_alumno)) {
       $datos['errores']['rut_alumno'] = 'El campo <strong>"RUT "</strong> no es válido.';
     }
+  }else{
+    $datos['errores']['rut_alumno'] = 'El campo <strong>"RUT "</strong> esta en blanco.';
+
   }
+
+  if (!isset($_POST['fecha_nacimiento']) || empty($_POST['fecha_nacimiento'])) {
+    $datos['errores']['fecha_nacimiento'] = 'El campo <b>fecha proximo pago</b> esta en blanco.';
+  } else {
+    $fecha_nacimiento = trim($_POST['fecha_nacimiento']);
+    $valores = explode('/', $fecha_nacimiento);
+    if (!(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2]))) {
+      $datos['errores']['fecha_nacimiento'] = 'El campo <b>fecha_nacimiento</b> es inválida.';
+    } else {
+      $fecha_nacimiento = $valores[2] . '-' . $valores[1] . '-' . $valores[0];
+    }
+  }
+
+
+
+
 
   $correo_1 = $_POST['correo_1'];
 
@@ -145,20 +163,20 @@ if ($action == 'ajax') {
     $sql_insertar_alumno = "INSERT INTO alumnos( nombres_alumno,
                                                                 apellidos_alumno,
                                                                 rut_alumno,
+                                                                fecha_nacimiento,
                                                                 correo_1,
                                                                 correo_2,
                                                                 telefono_alumno,
-                                                                fecha_pago,
                                                                 fecha_creacion_alumno,
-                                                                fecha_edicion_aumno,
+                                                                fecha_edicion_alumno,
                                                                 estado_alumno)
                                      VALUES ('$nombres',
                                              '$apellidos',
                                              '$rut_alumno',
+                                             '$fecha_nacimiento',
                                              '$correo_1',
                                              '$correo_2',
                                              '$telefono_alumno',
-                                             '$fecha_proximo_pago',
                                               CURRENT_TIMESTAMP(),
                                               CURRENT_TIMESTAMP(),
                                              '1')";
@@ -169,7 +187,7 @@ if ($action == 'ajax') {
       $datos['exito'] = 'El alumno se ha registrado en el sistema.';
       $datos['id'] = mysqli_insert_id($con);
     } else {
-      $datos['errores']['insertar'] = 'Ha ocurrido un <b>error</b> en el proceso. Intente nuevamente.';
+      $datos['errores']['insertar'] = 'Ha ocurrido un <b>error</b> en el proceso. Intente nuevamente.'.$sql_insertar_alumno;
     }
   }
 }

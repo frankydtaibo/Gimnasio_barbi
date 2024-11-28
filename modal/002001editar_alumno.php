@@ -64,14 +64,12 @@
               </div>
 
               <div class="form-group">
-                <label for="fecha_proximo_pago_editar" class="col-sm-3 control-label">Fecha Proximo Pago</label>
+                <label for="fecha_nacimiento_editar" class="col-sm-3 control-label">Fecha Nacimiento</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="fecha_proximo_pago_editar" name="fecha_proximo_pago_editar" placeholder="Ej: DD/MM/YYYY">
+                  <input type="text" class="form-control" id="fecha_nacimiento_editar" name="fecha_nacimiento_editar" placeholder="Ej: 18626432-k">
                 </div>
                 <span></span>
               </div>
-
-
 
           </div>
           <div class="modal-footer">

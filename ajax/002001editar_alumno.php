@@ -114,6 +114,20 @@
     }
   }
 
+  if (!isset($_POST['fecha_nacimiento_editar']) || empty($_POST['fecha_nacimiento_editar'])) {
+    $datos['errores']['fecha_nacimiento_editar'] = 'El campo <b>fecha proximo pago</b> esta en blanco.';
+  } else {
+    $fecha_nacimiento_editar = trim($_POST['fecha_nacimiento_editar']);
+    $valores = explode('/', $fecha_nacimiento_editar);
+    if (!(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2]))) {
+      $datos['errores']['fecha_nacimiento_editar'] = 'El campo <b>fecha_nacimiento_editar</b> es inválida.';
+    } else {
+      $fecha_nacimiento_editar = $valores[2] . '-' . $valores[1] . '-' . $valores[0];
+    }
+  }
+
+
+
   $correo_1 = $_POST['correo_1_editar'];
 
   //Validacion email
@@ -146,19 +160,6 @@
 
 
 
-
-  if (!isset($_POST['fecha_proximo_pago_editar']) || empty($_POST['fecha_proximo_pago_editar'])) {
-    $datos['errores']['fecha_proximo_pago_editar'] = 'El campo <b>fecha proximo pago</b> esta en blanco.';
-  } else {
-    $fecha_proximo_pago = trim($_POST['fecha_proximo_pago_editar']);
-    $valores = explode('/', $fecha_proximo_pago);
-    if (!(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2]))) {
-      $datos['errores']['fecha_proximo_pago_editar'] = 'El campo <b>Fecha proximo pago</b> es inválida.';
-    } else {
-      $fecha_proximo_pago = $valores[2] . '-' . $valores[1] . '-' . $valores[0];
-    }
-  }
-
     //Si no existen errores se procede a guardar el registro.
     if( !(isset($datos['errores'])) || is_null($datos['errores']) ){ 
 
@@ -166,10 +167,10 @@
                                    SET nombres_alumno = '$nombres',
                                        apellidos_alumno = '$apellidos',
                                        rut_alumno = '$rut_alumno',
+                                       fecha_nacimiento = '$fecha_nacimiento_editar',
                                        correo_1 = '$correo_1',
                                        correo_2 = '$correo_2',
                                        telefono_alumno = '$telefono_alumno',
-                                       fecha_pago = '$fecha_proximo_pago',
                                        fecha_edicion_alumno = CURRENT_TIMESTAMP()
                                    WHERE id_alumno = '$id_alumno'";
 
