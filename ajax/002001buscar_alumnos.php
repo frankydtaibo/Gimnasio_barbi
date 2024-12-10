@@ -12,7 +12,7 @@
 
      $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
      $aColumns = array('t1.nombres_alumno','t1.apellidos_alumno');
-     $sTable = "alumnos t1";
+     $sTable = "alumno t1";
      $sWhere = "";
 
     if ( $_GET['q'] != "" ){

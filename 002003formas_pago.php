@@ -38,7 +38,7 @@
     <div class="panel panel-primary">
     <div class="panel-heading">
        
-      <h4><i class='icon-validacion icono-titulo'></i> Formas de Pagos</h4>
+      <h4><i class='icon-dinero icono-titulo'></i> Formas de Pagos</h4>
     </div>      
       <div class="panel-body">
      

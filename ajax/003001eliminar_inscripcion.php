@@ -6,8 +6,10 @@ require_once ("../config/conexion.php");
         $id=intval($_GET['id']);
 
         $sql_validacion = "SELECT * 
-                           FROM inscripcion 
-                           WHERE id_plan = $id";
+                           FROM inscripcion t1 
+                           left join pago t2 on t1.id_pago = t2.id_pago
+                           WHERE id_inscripcion = '$id' 
+                           AND estado_pago = '1'";
         $query_validacion = mysqli_query($con, $sql_validacion);
 
         if (mysqli_num_rows($query_validacion) > 0) {
@@ -15,12 +17,12 @@ require_once ("../config/conexion.php");
           ?>
           <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>¡Aviso!</strong> No se puede borrar porque existen planes asociados a un alumno activo.
+            <strong>¡Aviso!</strong> No se puede borrar porque existen un registro activo.
           </div>
         <?php 
       } else {
 
-        if ($delete1=mysqli_query($con,"DELETE FROM plan WHERE id_plan='".$id."'")){
+        if ($delete1=mysqli_query($con,"DELETE FROM inscripcion WHERE id_inscripcion='".$id."'")){
           ?>
             <div class="alert alert-success alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -36,7 +38,10 @@ require_once ("../config/conexion.php");
           <?php
           
         }
+
+
       }
+  
      
     }else{
         ?>

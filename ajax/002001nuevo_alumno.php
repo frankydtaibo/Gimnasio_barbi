@@ -87,40 +87,36 @@ if ($action == 'ajax') {
     $rut_alumno = preg_replace('/[^k0-9]/i', '', $rut_alumno);
 
     if (!validar($rut_alumno)) {
-      $datos['errores']['rut_alumno'] = 'El campo <strong>"RUT "</strong> no es válido.';
+      $datos['errores']['rut_alumno'] = 'El campo <strong>RUT</strong> no es válido.';
     }
   }else{
-    $datos['errores']['rut_alumno'] = 'El campo <strong>"RUT "</strong> esta en blanco.';
+    $datos['errores']['rut_alumno'] = 'El campo <strong>RUT</strong> esta en blanco.';
 
   }
 
   if (!isset($_POST['fecha_nacimiento']) || empty($_POST['fecha_nacimiento'])) {
-    $datos['errores']['fecha_nacimiento'] = 'El campo <b>fecha proximo pago</b> esta en blanco.';
+    $datos['errores']['fecha_nacimiento'] = 'El campo <b>Fecha Nacimiento</b> esta en blanco.';
   } else {
     $fecha_nacimiento = trim($_POST['fecha_nacimiento']);
     $valores = explode('/', $fecha_nacimiento);
     if (!(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2]))) {
-      $datos['errores']['fecha_nacimiento'] = 'El campo <b>fecha_nacimiento</b> es inválida.';
+      $datos['errores']['fecha_nacimiento'] = 'El campo <b>Fecha Nacimiento</b> es inválida.';
     } else {
       $fecha_nacimiento = $valores[2] . '-' . $valores[1] . '-' . $valores[0];
     }
   }
 
-
-
-
-
   $correo_1 = $_POST['correo_1'];
 
   //Validacion email
   if ($correo_1 == '')
-    $datos['errores']['correo_1'] = 'El campo <strong>"Correo 1"</strong> no ha sido llenado.';
+    $datos['errores']['correo_1'] = 'El campo <strong>Correo 1</strong> esta en blanco.';
   else {
 
     $patron = '/^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9]|-)+((\.){0,1}[A-Z|a-z|0-9]|-){1}(\.[a-z]{2,3}){1,2}$/i';
 
     if (preg_match($patron, $correo_1) == 0)
-      $datos['errores']['correo_1'] = 'El campo <strong>"Correo 1"</strong> no es válido.';
+      $datos['errores']['correo_1'] = 'El campo <strong>Correo 1</strong> no es válido.';
   }
 
   $correo_2 = $_POST['correo_2'];
@@ -130,37 +126,22 @@ if ($action == 'ajax') {
     $patron = '/^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9]|-)+((\.){0,1}[A-Z|a-z|0-9]|-){1}(\.[a-z]{2,3}){1,2}$/i';
 
     if (preg_match($patron, $correo_2) == 0)
-      $datos['errores']['correo_2'] = 'El campo <strong>"Correo 2"</strong> no es válido.';
+      $datos['errores']['correo_2'] = 'El campo <strong>Correo 2</strong> no es válido.';
   }
 
   $telefono_alumno = $_POST['telefono_alumno'];
   //Validacion fono
   if ($telefono_alumno == '')
-    $datos['errores']['telefono_alumno']  = 'El campo <strong>"Telefono"</strong> no ha sido llenado.';
+    $datos['errores']['telefono_alumno']  = 'El campo <strong>Telefono</strong> esta en blanco.';
   else if (strlen($telefono_alumno) < 7)
-    $datos['errores']['telefono_alumno']  = 'El campo <strong>"Telefono"</strong> no cuenta con suficientes dígitos.';
-
-
-
-
-  if (!isset($_POST['fecha_proximo_pago']) || empty($_POST['fecha_proximo_pago'])) {
-    $datos['errores']['fecha_proximo_pago'] = 'El campo <b>fecha proximo pago</b> esta en blanco.';
-  } else {
-    $fecha_proximo_pago = trim($_POST['fecha_proximo_pago']);
-    $valores = explode('/', $fecha_proximo_pago);
-    if (!(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2]))) {
-      $datos['errores']['fecha_proximo_pago'] = 'El campo <b>fecha_proximo_pago</b> es inválida.';
-    } else {
-      $fecha_proximo_pago = $valores[2] . '-' . $valores[1] . '-' . $valores[0];
-    }
-  }
+    $datos['errores']['telefono_alumno']  = 'El campo <strong>Telefono</strong> no cuenta con suficientes dígitos.';
 
 
 
   //Si no existen errores se procede a guardar el registro.
   if (!(isset($datos['errores'])) || is_null($datos['errores'])) {
 
-    $sql_insertar_alumno = "INSERT INTO alumnos( nombres_alumno,
+    $sql_insertar_alumno = "INSERT INTO alumno( nombres_alumno,
                                                                 apellidos_alumno,
                                                                 rut_alumno,
                                                                 fecha_nacimiento,

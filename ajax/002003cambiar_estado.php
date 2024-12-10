@@ -16,7 +16,7 @@
     
       $id = intval($_POST['id']);
 
-      $sql_update = "UPDATE formas_de_pago
+      $sql_update = "UPDATE forma_pago
                      SET estado = CASE WHEN estado = 1 THEN 0
                                                      WHEN estado = 0 THEN 1
                                                      ELSE estado

@@ -60,7 +60,7 @@
       $id_alumno = trim($_POST['id_alumno']);
 
       $sql_validar_id = "SELECT * 
-                         FROM alumnos
+                         FROM alumno
                          WHERE id_alumno = '$id_alumno'";
 
       $query_validar_id = mysqli_query($con, $sql_validar_id);
@@ -163,7 +163,7 @@
     //Si no existen errores se procede a guardar el registro.
     if( !(isset($datos['errores'])) || is_null($datos['errores']) ){ 
 
-      $sql_update_alumno = "UPDATE alumnos
+      $sql_update_alumno = "UPDATE alumno
                                    SET nombres_alumno = '$nombres',
                                        apellidos_alumno = '$apellidos',
                                        rut_alumno = '$rut_alumno',

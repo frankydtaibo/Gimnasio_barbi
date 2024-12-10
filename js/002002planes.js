@@ -43,7 +43,7 @@ $( "#guardar_plan" ).submit(function( event ) {
     
     var nombre_plan = $("#nombre_plan").val();
     var descripcion_plan = $("#descripcion_plan").val();
-    var duracion_plan = $("#duracion_plan").val();
+    var cantidad_meses_plan = $("#cantidad_meses_plan").val();
     var precio_plan = $("#precio_plan").val();
  
     var action = 'ajax';
@@ -54,7 +54,7 @@ $( "#guardar_plan" ).submit(function( event ) {
       data: { action: action,
               nombre_plan: nombre_plan,
               descripcion_plan: descripcion_plan,
-              duracion_plan: duracion_plan,
+              cantidad_meses_plan: cantidad_meses_plan,
               precio_plan: precio_plan},
            dataType:"json",
       beforeSend: function(objeto){
@@ -73,7 +73,7 @@ $( "#guardar_plan" ).submit(function( event ) {
   
         var valores = ['nombre_plan',
                        'descripcion_plan',
-                       'duracion_plan',
+                       'cantidad_meses_plan',
                       'precio_plan'
                 ];
   
@@ -168,13 +168,13 @@ $('#editarPlan').on('show.bs.modal', function (event) {
   var id_plan = button.data('id_plan');
   var nombre_plan = button.data('nombre_plan');
   var descripcion_plan = button.data('descripcion_plan');
-  var duracion_plan = button.data('duracion_plan');
+  var cantidad_meses_plan = button.data('cantidad_meses_plan');
   var precio_plan = button.data('precio_plan');
 
   $("#id_plan").val(id_plan);
   $("#nombre_plan_editar").val(nombre_plan);
   $("#descripcion_plan_editar").val(descripcion_plan);
-  $("#duracion_plan_editar").val(duracion_plan);
+  $("#cantidad_meses_plan_editar").val(cantidad_meses_plan);
   $("#precio_plan_editar").val(precio_plan);
 
 });
@@ -185,8 +185,9 @@ $( "#editar_plan" ).submit(function( event ) {
   $('#editar_datos').attr("disabled", true);
   
   var id_plan = $("#id_plan").val();
+  var nombre_plan_editar =  $("#nombre_plan_editar").val();
   var descripcion_plan_editar = $("#descripcion_plan_editar").val();
-  var duracion_plan_editar = $("#duracion_plan_editar").val();
+  var cantidad_meses_plan_editar = $("#cantidad_meses_plan_editar").val();
   var precio_plan_editar = $("#precio_plan_editar").val();
   var action = 'ajax';
 
@@ -195,8 +196,9 @@ $( "#editar_plan" ).submit(function( event ) {
     url: "ajax/002002editar_plan.php",
     data: { action: action,
             id_plan: id_plan,
+            nombre_plan_editar: nombre_plan_editar,
             descripcion_plan_editar: descripcion_plan_editar,
-            duracion_plan_editar: duracion_plan_editar,
+            cantidad_meses_plan_editar: cantidad_meses_plan_editar,
             precio_plan_editar: precio_plan_editar
           },
     dataType:"json",
@@ -214,8 +216,9 @@ console.log(datos);
       var class_span_error = 'glyphicon glyphicon-remove form-control-feedback';
 
       var valores = ['id_plan_editar',
+        'nombre_plan_editar',
         'descripcion_plan_editar',
-                     'duracion_plan_editar',
+                     'cantidad_meses_plan_editar',
                      'precio_plan_editar'];
 
       if(datos.hasOwnProperty('errores')){

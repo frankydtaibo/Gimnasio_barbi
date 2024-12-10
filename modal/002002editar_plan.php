@@ -13,12 +13,12 @@
             <form class="form-horizontal" method="post" id="editar_plan" name="editar_plan">
               <div id="resultados_ajax_editar"></div>
 
-              <input type="hidden" name="id_plan" id="id_plan">
+              <input type="text" name="id_plan" id="id_plan">
 
               <div class="form-group">
                 <label for="nombre_plan_editar" class="col-sm-3 control-label">Nombre Plan</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="nombre_plan_editar" name="nombre_plan_editar" placeholder="Ej: ABC123" disabled>
+                  <input type="text" class="form-control" id="nombre_plan_editar" name="nombre_plan_editar" placeholder="Ej: ABC123">
                 </div>
                 <span></span>
               </div>
@@ -32,9 +32,9 @@
               </div>
 
               <div class="form-group">
-                <label for="duracion_plan_editar" class="col-sm-3 control-label">duracion</label>
+                <label for="cantidad_meses_plan_editar" class="col-sm-3 control-label">Cantidad Meses</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="duracion_plan_editar" name="duracion_plan_editar" placeholder="Ej: 40000">
+                  <input type="text" class="form-control" id="cantidad_meses_plan_editar" name="cantidad_meses_plan_editar" placeholder="Ej: 40000">
                 </div>
                 <span></span>
               </div>

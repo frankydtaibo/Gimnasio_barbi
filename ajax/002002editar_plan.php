@@ -26,7 +26,7 @@
       $id_plan = trim($_POST['id_plan']);
 
       $sql_validar_id = "SELECT * 
-                         FROM planes
+                         FROM plan
                          WHERE id_plan = '$id_plan'";
 
       $query_validar_id = mysqli_query($con, $sql_validar_id);
@@ -37,6 +37,14 @@
 
       }
 
+    }
+
+    if (!isset($_POST['nombre_plan_editar']) || empty($_POST['nombre_plan_editar'])) {
+
+      $datos['errores']['nombre_plan_editar'] = 'El campo de <b>Código plan</b> esta en blanco.';
+    } else {
+  
+      $nombre_plan_editar = trim($_POST['nombre_plan_editar']);
     }
 
 
@@ -51,12 +59,12 @@
     
     
     
-      if (!isset($_POST['duracion_plan_editar']) || empty($_POST['duracion_plan_editar'])) {
+      if (!isset($_POST['cantidad_meses_plan_editar']) || empty($_POST['cantidad_meses_plan_editar'])) {
     
-        $datos['errores']['duracion_plan_editar'] = 'El campo de <b>duracion</b> esta en blanco.';
+        $datos['errores']['cantidad_meses_plan_editar'] = 'El campo de <b>cantidad_meses</b> esta en blanco.';
       } else {
     
-        $duracion_plan_editar = trim($_POST['duracion_plan_editar']);
+        $cantidad_meses_plan_editar = trim($_POST['cantidad_meses_plan_editar']);
       }
     
     
@@ -72,9 +80,10 @@
     //Si no existen errores se procede a guardar el registro.
     if( !(isset($datos['errores'])) || is_null($datos['errores']) ){ 
 
-      $sql_update_plan = "UPDATE planes
-                                   SET descripcion_plan = '$descripcion_plan_editar',
-                                       duracion_plan = '$duracion_plan_editar',
+      $sql_update_plan = "UPDATE plan
+                                   SET nombre_plan = '$nombre_plan_editar',
+                                       descripcion_plan = '$descripcion_plan_editar',
+                                       cantidad_meses_plan = '$cantidad_meses_plan_editar',
                                        precio_plan = '$precio_plan_editar',
                                        fecha_edicion = CURRENT_TIMESTAMP()
                                    WHERE id_plan = '$id_plan'";

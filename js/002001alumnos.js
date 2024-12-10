@@ -210,14 +210,19 @@ function obtener_datos_copia(id){
         success:function(datos){
     
           var msg = '';
-    
-          if(datos.hasOwnProperty('error')){
-            msg = mensaje_retro('danger','Error',datos['error']); 
+          if(datos.hasOwnProperty('advertencia')){
+            msg = mensaje_retro('warning','Advertencia',datos['advertencia']); 
+          }else{
+            if(datos.hasOwnProperty('error')){
+              msg = mensaje_retro('danger','Error',datos['error']); 
+            }
+            else{
+              msg = mensaje_retro('success','Bien hecho',datos['exito']);
+              load(pagina);
+            }
+
           }
-          else{
-            msg = mensaje_retro('success','Bien hecho',datos['exito']);
-            load(pagina);
-          }
+         
     
           $('#resultados').html(msg);
         }

@@ -16,7 +16,7 @@
     
       $id = intval($_POST['id']);
 
-      $sql_update = "UPDATE planes
+      $sql_update = "UPDATE plan
                      SET estado_plan = CASE WHEN estado_plan = 1 THEN 0
                                                      WHEN estado_plan = 0 THEN 1
                                                      ELSE estado_plan

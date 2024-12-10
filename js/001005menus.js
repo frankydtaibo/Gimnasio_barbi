@@ -15,7 +15,7 @@ function load(page){
 		success:function(data){
 			$(".outer_div").html(data).fadeIn('slow');
 			$('#loader').html('');
-			
+
 		}
 	})
 }

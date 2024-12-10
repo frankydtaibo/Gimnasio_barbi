@@ -16,23 +16,42 @@
     
       $id = intval($_POST['id']);
 
-      $sql_update = "UPDATE alumnos
-                     SET estado_alumno = CASE WHEN estado_alumno = 1 THEN 0
-                                                     WHEN estado_alumno = 0 THEN 1
-                                                     ELSE estado_alumno
-                                                END
-                     WHERE id_alumno = '$id'";
+      $select = "SELECT * 
+                 FROM inscripcion 
+                 WHERE id_alumno = '$id'";
+      $query_select = mysqli_query($con, $select);
 
-      $query_update = mysqli_query($con, $sql_update);
+      if(mysqli_num_rows($query_select)>0){
 
-      if ($query_update) {
-        
-        $datos['exito'] = "El estado del alumno cambió con éxito.";
+        $datos['advertencia'] = "El alumno tiene un registro de inscripción, por favor intente nuevamente.";
 
+
+      }else{
+
+        $sql_update = "UPDATE alumno
+        SET estado_alumno = CASE WHEN estado_alumno = 1 THEN 0
+                                        WHEN estado_alumno = 0 THEN 1
+                                        ELSE estado_alumno
+                                   END
+        WHERE id_alumno = '$id'";
+
+$query_update = mysqli_query($con, $sql_update);
+
+if ($query_update) {
+
+$datos['exito'] = "El estado del alumno cambió con éxito.";
+
+}
+else{
+$datos['error'] = "Hubo un error en el proceso, por favor intente nuevamente.";
+}
       }
-      else{
-        $datos['error'] = "Hubo un error en el proceso, por favor intente nuevamente.";
-      }
+      
+
+     
+
+
+
 
     }
 

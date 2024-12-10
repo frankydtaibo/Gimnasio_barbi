@@ -2,7 +2,7 @@
   /*-------------------------
   Autor: Frank Taibo
   Cod Menu: 003
-  Cod Item Menu:001
+  Cod Item Menu:002
   ---------------------------*/
   session_start();
   if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
@@ -14,13 +14,13 @@
   require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
   require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
     $active_usuarios="active";  
-  $title="Inscripciones";
+  $title="Asistencia";
   if (isset($title))
     {
       
       $user_perfil_id=$_SESSION['user_perfil_id'];
       $menu_cod='003';
-      $menu_item_cod='001';
+      $menu_item_cod='002';
     }
     include("modal/valida_permiso.php");
   
@@ -34,23 +34,19 @@
   <?php
   include("navbar.php");
   ?> 
-    <div class="container-fluid">
+    <div class="container">
     <div class="panel panel-primary">
     <div class="panel-heading">
-        <div class="btn-group pull-right">
-        <button type='button' class="btn btn-success" data-toggle="modal" data-target="#nueva_inscripcion"><span class="glyphicon glyphicon-plus" ></span> Nueva inscripción</button>
-      </div>
-      <h4><i class='icon-contrato icono-titulo'></i> Inscripciones</h4>
+      <h4><i class='icon-contrato icono-titulo'></i> Alumnos por Vencer</h4>
     </div>      
       <div class="panel-body">
       <?php
-   
+   /*
 include("modal/003001registro_inscripciones.php");
-       
-     include("modal/003001editar_inscripciones.php");
-       include("modal/003001registro_pago.php");
-       include("modal/003001postergar.php");
-    /*  
+        
+     include("modal/002002editar_plan.php");
+      include("modal/001002ver_usuarios.php");
+      
       require_once("modal/001002cambiar_password.php");
       
       */ ?>
@@ -83,7 +79,7 @@ include("modal/003001registro_inscripciones.php");
   <?php
   include("footer.php");
   ?>
-  <script type="text/javascript" src="js/003001inscripciones.js"></script>
+  <script type="text/javascript" src="js/003002informe.js"></script>
 
 
   </body>

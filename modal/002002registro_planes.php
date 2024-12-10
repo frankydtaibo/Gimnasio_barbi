@@ -31,9 +31,9 @@
               </div>
 
               <div class="form-group">
-                <label for="duracion_plan" class="col-sm-3 control-label">Duración</label>
+                <label for="cantidad_meses_plan" class="col-sm-3 control-label">Cantidad Meses</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="duracion_plan" name="duracion_plan" placeholder="Ej: 40000">
+                  <input type="text" class="form-control" id="cantidad_meses_plan" name="cantidad_meses_plan" placeholder="Ej: 40000">
                 </div>
                 <span></span>
               </div>

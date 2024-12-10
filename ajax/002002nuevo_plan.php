@@ -39,12 +39,12 @@ if ($action == 'ajax') {
 
 
 
-  if (!isset($_POST['duracion_plan']) || empty($_POST['duracion_plan'])) {
+  if (!isset($_POST['dcantidad_meses_plan']) || empty($_POST['dcantidad_meses_plan'])) {
 
-    $datos['errores']['duracion_plan'] = 'El campo de <b>duracion</b> esta en blanco.';
+    $datos['errores']['dcantidad_meses_plan'] = 'El campo de <b>dcantidad_meses</b> esta en blanco.';
   } else {
 
-    $duracion_plan = trim($_POST['duracion_plan']);
+    $dcantidad_meses_plan = trim($_POST['dcantidad_meses_plan']);
   }
 
 
@@ -60,16 +60,16 @@ if ($action == 'ajax') {
   //Si no existen errores se procede a guardar el registro.
   if (!(isset($datos['errores'])) || is_null($datos['errores'])) {
 
-    $sql_insertar_plan = "INSERT INTO planes( nombre_plan,
+    $sql_insertar_plan = "INSERT INTO plan( nombre_plan,
                                               descripcion_plan,
-                                              duracion_plan,
+                                              dcantidad_meses_plan,
                                               precio_plan,
                                               estado_plan,
                                               fecha_creacion,
                                               fecha_edicion)
                                      VALUES ('$nombre_plan',
                                              '$descripcion_plan',
-                                             '$duracion_plan',
+                                             '$dcantidad_meses_plan',
                                              '$precio_plan',
                                              '1',
                                              CURRENT_TIMESTAMP(),
